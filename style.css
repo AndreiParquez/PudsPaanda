@@ -1,0 +1,717 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@500&display=swap');
+/**
+ * Extracted from: SweetAlert
+ * Modified by: Istiak Tridip
+ */
+ .success-checkmark {
+    width: 80px;
+    height: 115px;
+    margin: 0 auto;
+    
+    
+    .check-icon {
+        width: 80px;
+        height: 80px;
+        position: relative;
+        border-radius: 50%;
+        box-sizing: content-box;
+        border: 4px solid #4CAF50;
+        
+        &::before {
+            top: 3px;
+            left: -2px;
+            width: 30px;
+            transform-origin: 100% 50%;
+            border-radius: 100px 0 0 100px;
+        }
+        
+        &::after {
+            top: 0;
+            left: 30px;
+            width: 60px;
+            transform-origin: 0 50%;
+            border-radius: 0 100px 100px 0;
+            animation: rotate-circle 4.25s ease-in;
+        }
+        
+        &::before, &::after {
+            content: '';
+            height: 100px;
+            position: absolute;
+            background: #FFFFFF;
+            transform: rotate(-45deg);
+        }
+        
+        .icon-line {
+            height: 5px;
+            background-color: #4CAF50;
+            display: block;
+            border-radius: 2px;
+            position: absolute;
+            z-index: 10;
+            
+            &.line-tip {
+                top: 46px;
+                left: 14px;
+                width: 25px;
+                transform: rotate(45deg);
+                animation: icon-line-tip 0.75s;
+            }
+            
+            &.line-long {
+                top: 38px;
+                right: 8px;
+                width: 47px;
+                transform: rotate(-45deg);
+                animation: icon-line-long 0.75s;
+            }
+        }
+        
+        .icon-circle {
+            top: -4px;
+            left: -4px;
+            z-index: 10;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            position: absolute;
+            box-sizing: content-box;
+            border: 4px solid rgba(76, 175, 80, .5);
+        }
+        
+        .icon-fix {
+            top: 8px;
+            width: 5px;
+            left: 26px;
+            z-index: 1;
+            height: 85px;
+            position: absolute;
+            transform: rotate(-45deg);
+            background-color: #FFFFFF;
+        }
+    }
+}
+
+@keyframes rotate-circle {
+    0% {
+        transform: rotate(-45deg);
+    }
+    5% {
+        transform: rotate(-45deg);
+    }
+    12% {
+        transform: rotate(-405deg);
+    }
+    100% {
+        transform: rotate(-405deg);
+    }
+}
+
+@keyframes icon-line-tip {
+    0% {
+        width: 0;
+        left: 1px;
+        top: 19px;
+    }
+    54% {
+        width: 0;
+        left: 1px;
+        top: 19px;
+    }
+    70% {
+        width: 50px;
+        left: -8px;
+        top: 37px;
+    }
+    84% {
+        width: 17px;
+        left: 21px;
+        top: 48px;
+    }
+    100% {
+        width: 25px;
+        left: 14px;
+        top: 45px;
+    }
+}
+
+@keyframes icon-line-long {
+    0% {
+        width: 0;
+        right: 46px;
+        top: 54px;
+    }
+    65% {
+        width: 0;
+        right: 46px;
+        top: 54px;
+    }
+    84% {
+        width: 55px;
+        right: 0px;
+        top: 35px;
+    }
+    100% {
+        width: 47px;
+        right: 8px;
+        top: 38px;
+    }
+}
+body {
+    margin: 0;
+    font-family: 'Nunito', sans-serif;
+    background-color: #131313;
+    overflow-x: hidden;
+}
+.logos{
+    display: flex;
+margin-top: 20px;
+    text-align: center;
+    padding-left: 24%;
+}
+.logos img{
+    height: 32px;
+    margin: 20px;
+    transition: filter 0.3s ease-in-out;
+}
+.logos img:hover{
+    cursor: pointer;
+    filter: drop-shadow(0 4px 8px rgb(255, 255, 255));
+    transform: scale(1.15);
+}
+
+.loadercontainer{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: #13131368;
+    z-index: 20;
+    background-color: transparent;backdrop-filter: blur(10px);
+}
+.typecontainer{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: #13131368;
+    z-index: 20;
+    background-color: transparent;backdrop-filter: blur(10px);
+}
+.type{
+    height: 400px;width:600px;background-color: #FFFFFF;top:27%;left:30%;position: absolute;border-radius: 10px;
+    text-align: center;
+    padding-top: 20px;
+
+}
+.newDiv{
+    display: none;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: #13131368;
+    z-index: 20;
+    background-color: transparent;backdrop-filter: blur(10px);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.ordernotif{
+    height: 300px;width:400px;background-color: #FFFFFF;top:29%;left:38%;position: absolute;border-radius: 10px;
+    text-align: center;
+    padding-top: 20px;
+}
+/* HTML:  */
+.loader {
+    width: 35px;
+    height: 80px;
+    position: relative;
+    margin-left: 130px;
+    margin-top: 70px;
+  }
+  .loader:after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 3px 5px;
+    border-top: 1px solid #bbb6aa;
+    border-bottom: 4px solid #bbb6aa;
+    background: 
+      linear-gradient(#28f558 0 0) bottom no-repeat content-box, 
+      #e4e0d7;
+    mix-blend-mode: darken;
+    animation: l1 1.5s infinite linear;
+  }
+  .loader:before {
+    content: "";
+    position: absolute;
+    inset: -18px calc(50% - 2px) 8px;
+    background: #eb6b3e;   
+    transform-origin: bottom;
+    transform: rotate(8deg);
+  }
+  @keyframes l1 {
+   0%   {background-size: 100% 100%}
+   100% {background-size: 100% 5%}
+  }
+.navbar {
+    background-color: #ffffff;
+    border-bottom: 2px solid black;
+    position: fixed;
+    width: 100vw;
+    padding: 0;
+    height: 50px;
+    padding-top: 7px;
+}
+.navbar img{
+    height: 40px;
+    margin-left: 20px;
+    margin-right: -10px;
+}
+.login{
+   margin-left: 70%;
+}
+.login button{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-top: 5px;
+    height: 37px;
+    background-color: #00af29;
+    color: #ffffff;
+    font-family: 'Nunito';
+    font-weight: bold;
+    cursor: pointer;
+border: none;
+border-radius: 8px;}
+.cart{
+    color: #1f1f1f;
+    padding: 20px;
+    display: none;
+    position: absolute;
+    background:transparent;
+    backdrop-filter: blur(40px);
+    height: 390px;
+    width: 400px;
+    top:60px;
+    right: 3%;
+    z-index: 4;
+    border-radius: 10px;
+    border: 2px solid #636363;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.cart.open {
+    display: block; /* Show the cart when the 'open' class is present */
+}
+.navbar h1{
+    margin: 0;
+    font-size: 23px;
+    margin-left: 20px;
+}
+
+.nav-list {
+    list-style-type: none;
+    margin-top: 110px;
+    padding: 0;
+}
+.nav-list li.active{
+    background-color: rgb(168, 210, 157);
+}
+
+.nav-list li {
+    background-color: #fafafab3;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    display: flex;
+    box-shadow: rgba(99, 99, 99, 0.099) 0px 2px 8px 0px;
+}
+.nav-list li img{
+ height: 30px;
+ margin: 9px;
+}
+.nav-list li a {
+    display: block;
+    color: #131313 ;
+    text-align: left;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-list li:hover {
+    background-color: #ddd;
+    color: #131313 ;
+}
+
+#basket-icon{
+    font-size: 20px;
+   border-radius: 50%;
+    float: right;
+    list-style-type: none;
+    padding: 10px;
+
+    cursor: pointer;  
+    margin-right: 50px;
+
+
+    color:#00831f
+}
+#basket-icon i{
+    color: #131313;
+}
+.main{
+    padding-top: 80px;
+    overflow-y: hidden;
+
+}
+.main h1{
+    font-size: 120px;
+    text-align: center;
+    color: #ffffff;
+    font-weight: bolder;
+    margin-bottom: 0;
+    text-shadow: 1px 1px 2px rgb(237, 237, 237);
+}
+.main p{
+    color: rgb(130, 231, 102);
+    margin: 0;
+    text-align: center;
+    margin-top: -30px;
+}
+#ghost{
+    position: absolute;
+    left: 100%;
+    mix-blend-mode: exclusion;
+    animation: ghost 4.5s ease-in-out infinite;
+    height: 120px;
+    top:180px;
+    
+}
+@keyframes ghost{
+    to{
+        left: -100px;
+    }
+}
+
+.loc{
+    background-color: #ddd;
+    padding: 8px;
+   text-align: center;
+   border-radius: 9px;
+   width: 660px;
+   box-shadow: rgba(0, 0, 0, 0.993) 0px 3px 8px;
+   margin-left: 28%;
+   margin-top: 3%;
+}
+.loc button{
+    height: 50px;
+    border-radius: 9px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    background-color: #131313;
+    border: none;
+    color: rgb(144, 228, 123);
+    margin-left: 20px;
+    width: 100px;
+    box-shadow: rgba(0, 0, 0, 0.416) 0px 3px 8px;
+}
+.loc button:hover,
+.loc a:hover{
+    cursor: pointer;
+    background-color: #ddd;
+    color: #131313;
+}
+.loc a{
+    color: rgb(144, 228, 123);
+}
+.gps{
+    height: 50px;
+    width: 500px;
+    border-radius: 9px;
+    border: 1px solid #424242;
+    background-color: rgb(210, 248, 200);
+}
+.gps::placeholder{
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+}
+.main2{
+    padding-top: 60px;
+    display: flex;
+    padding-left: 20px;
+    padding-right: 20px;
+
+}
+.leftnav{
+    width: 20%;
+    height: 690px;
+    background-color: #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    position: fixed;
+    overflow-y: scroll;
+}
+.leftnav::-webkit-scrollbar {
+    display: none;
+  }
+.mainbody{
+    width: 78%;
+    background-color: #ddd;
+    border-radius: 10px;
+    margin-left: 23%;
+}
+.box{
+    
+    background-color: #c2c2c2;
+    border-radius: 9px;
+    padding: 10px;
+    margin: 10px;
+}
+.search{
+    padding: 10px;
+    position: relative;
+    display: inline-block
+
+}
+.search2 input{
+    width: 250px;
+    height: 40px;
+    border-radius: 10px;
+    padding-left: 40px;
+    font-size: 14px;
+    background-color: #c6c5c578;
+    border: none;
+    margin-bottom: 20px;
+}
+.search input{
+    height: 40px;
+    width: 439px;
+    border-radius: 10px;
+    padding-left: 40px;
+    font-size: 14px;
+    background-color: #c6c5c578;
+    border: none;
+}
+.search i{
+    position: absolute;
+    left: 23px; /* Adjust the left position of the icon */
+    top: 50%;
+    transform: translateY(-50%);
+    color:  rgb(43, 199, 0);  
+}
+.search2 i{
+    position: absolute;
+    left: 11px; /* Adjust the left position of the icon */
+    top: 63%;
+    transform: translateY(-50%);
+    color:  rgb(43, 199, 0);  
+}
+.pink{
+    background-color: rgb(168, 210, 157);
+}
+.green{
+    background-color: rgb(175, 220, 205);
+}
+h3{
+    font-size: 30px;
+    font-weight: lighter;
+    margin-left: 20px;
+}
+.leftnav p{
+    font-size: 20px;
+    margin-top: 0;
+    font-weight: 400;
+}
+.navbarmenu a{
+    text-decoration: none;
+}
+.menulist{
+    display: flex;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+
+.menulist li a {
+    display: block;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+.menulist li.active {
+border-bottom: 3px solid rgb(43, 199, 0);
+
+}
+.menulist li.active a{
+
+    color: rgb(43, 199, 0);
+}
+.menulist li.active i{
+    color: rgb(43, 199, 0);
+}
+
+
+.menulist li{
+    height: 43px; 
+    margin-right: 20px;
+}
+.menulist i{
+    float: left;
+    margin: 0;
+    height: 10px;
+    margin-right: 15px; 
+    padding: 0;
+    
+}
+.menulist i:hover{
+    background-color: transparent;
+    
+}
+.menulist li:hover{
+    
+    background-color: #9e9e9e;
+}
+.hero{
+    height: 100px;
+    margin-left: 42%;
+}
+
+.banner{
+    height:164px;
+}
+.no{
+    background-color: transparent;
+}
+.card{
+    height: 270px;
+    width: 200px;
+    background-color: rgb(238, 238, 238);
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+.card img{
+    object-fit: cover;
+    height: 120px;
+    width: 190px;
+}
+.card p{
+font-size: 13px;
+}
+.card span{
+    font-weight: bold;
+}
+.try::-webkit-scrollbar {
+    display: none;
+  }
+  .card button{
+    height: 33px;
+    width: 100px;
+   float: right;
+    border-radius: 5px;
+    border: none;
+    background-color: rgb(43, 199, 0) ;
+    font-weight: bold;
+    font-family: 'Nunito', sans-serif;
+    color: #ddd;
+    margin-top: -10px;
+  }
+
+
+.quantity-input {
+    width: 40px;
+    height: 20px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    text-align: center;
+    outline: none; /* Remove default input focus styling */
+    transition: border-color 0.3s ease-in-out;
+}
+
+.quantity-input:hover,
+.quantity-input:focus {
+    border-color: #3498db;
+}
+.remove-button {
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+}
+.placeorder{
+    height: 40px;
+    width: 140px;
+    float: right;
+    position: absolute;
+    right: 20px;
+    border-radius: 10px;
+    border: none;
+    font-size: 14px;
+    font-family: 'Nunito';
+    margin-top: 20px;
+    background-color:  rgb(43, 199, 0);
+    color: #ddd;
+
+}
+#cart-items{
+    height: 200px;
+padding-left: 30px;
+border-bottom: 3px solid rgb(43, 199, 0) ;
+    
+}
+.placeorder i{
+    margin-right: 8px;
+    font-weight: bold;
+
+}
+
+select {
+    width: 200px;
+    padding: 8px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Style the select dropdown arrow */
+select::after {
+    content: '\25BC'; /* Unicode character for down arrow */
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+}
+
+/* Style the options in the dropdown */
+option {
+    background-color: #fff;
+    font-size: 12px;
+}
+
+/* Hover effect for options */
+option:hover {
+    background-color: #e0e0e0;
+}
+.card .combo{
+    background-color: rgb(255, 194, 11);
+}
+.red{
+    background-color: rgb(251, 172, 255)
+}
+.yellow{
+    background-color: rgb(255, 255, 227);
+}
+.violet{
+    background-color: #c29dfd;
+}
+.notmatching-card {
+    display: none;
+}
+.matching-card {
+    display: block;
+    /* You can customize the styles for matching cards here */
+}

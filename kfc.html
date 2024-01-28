@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="js.js"></script>
+    <script src="https://kit.fontawesome.com/1dbbe6d297.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+
+
+
+    <div class="loadercontainer" style="display: none;">
+        <div style="height: 200px;width:300px;background-color: transparent;backdrop-filter: blur(10px);top:29%;left:42%;position: absolute;border-radius: 10px;">
+            <div class="loader"></div>
+            <p style="text-align: center;color: #00ad28;">Processing...</p>
+        </div>
+        <div class="newDiv">
+        <div class="ordernotif">
+            <div class="success-checkmark">
+                <div class="check-icon">
+                  <span class="icon-line line-tip"></span>
+                  <span class="icon-line line-long"></span>
+                  <div class="icon-circle"></div>
+                  <div class="icon-fix"></div>
+                </div>
+              </div>
+        
+
+            <p style="color:#4CAF50;font-weight: bold;margin-top: -12px;font-size: 23px;" >Order Successfull</p>
+            <br>
+            <p>Please wait 10-15 minutes for your order to deliver</p>
+            <center><button onclick="hideLoader()" style="height: 50px;width: 169px; font-size: 16px;
+                background-color: #131313; border-radius: 9px; box-shadow: rgba(0, 0, 0, 0.416) 0px 3px 8px;color: rgb(144, 228, 123);border: none;">Continue</button></center>
+        </div>
+    </div>
+    </div>
+
+
+
+
+
+
+    <div class="navbar">
+        <i class="fa-solid fa-basket-shopping" id="basket-icon"></i>
+        <div style="display: flex;"><img src="icon.png"> <h1 style="margin-top: 5px;">PudsPanda</h1><div class="login"><button>Login</button>    <button>Login using Facebook</button></div></div>
+       
+
+
+
+
+
+
+
+
+
+
+
+<div class="cart" id="cart">         
+<div id="order-summary">
+    <div id="cart">
+        <h2 style="color: #00ad28;">Your Cart</h2>
+        <div id="cart-items"></div>
+    </div>
+<br>
+
+    <label for="paymentMethod">Payment Method:</label>
+    <select id="paymentMethod">
+        <option value="cashOnDelivery">Cash on Delivery</option>
+        <option value="card">Card</option>
+    </select>
+    <div style="display: flex;">
+        <h2>Total: ₱<span id="total">0.00</span></h2>
+        <button onclick="showLoader()" class="placeorder"><i class="fa-solid fa-basket-shopping"></i>Place Order</button>
+    </div>
+</div>
+
+
+
+
+        </div>
+      
+    </div>
+    
+    <div class="main2">
+       <div class="leftnav">
+        <div style="position: fixed;background-color: #ddd;" ><p>Restaurants</p>
+        <div class="search2">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search your restaurant">
+        </div></div>
+        <ul class="nav-list ">
+            <li><img src="mc.png"><a href="restaurant.html">McDo</a></li>
+            <li ><img src="j.svg"><a href="jollibee.html">Jollibbee</a></li>
+            <li><img src="manginasal.svg"><a href="manginasal.html">MangInasal</a></li>
+            <li><img src="k.png"><a href="kuyaj.html">Kuya J</a></li>
+            <li    class="active"><img src="kfc.png"><a href="kfc.html">KFC</a></li>
+            <li><img src="ck.png"><a href="chowking.html">Chowking</a></li>
+            <li><img src="bk.png"><a href="chowking.html">Burger King</a></li>
+            <li><img src="kenny.png"><a href="kenny.html">Kenny Rogers</a></li>
+            <li><img src="dd.jpg"><a href="dd.html">Dunkin Donuts</a></li>
+            
+          
+        </ul>
+       </div>
+       
+       <div class="mainbody">
+        <h3>Food Menu</h3>
+        <div class="navbarmenu">
+            <ul class="menulist">
+                <li class="active"><a href="#" class="active"><i class="fas fa-utensils"></i> All</a></li>
+                <li><a href="mcdobreakfast.html"><i class="fas fa-bread-slice"></i> Breakfast</a></li>
+                <li><a href="mcdolunch.html"><i class="fas fa-utensil-spoon"></i> Lunch</a></li>
+                <li><a href="mcdodinner.html"><i class="fas fa-utensils"></i> Dinner</a></li>
+                <li><a href="mcdosnacks.html"><i class="fas fa-cookie-bite"></i> Snacks</a></li>
+                <li><a href="mcdodesserts"><i class="fas fa-ice-cream"></i> Desserts</a></li>
+            
+            </ul>
+        </div>
+
+
+
+
+        <div class="box no">
+            <img src="kfc.png" class="hero">
+            <div class="try" style="display: flex;overflow-x: scroll;">
+          <img src="banner10.png" class="banner"><img src="banner10.png" class="banner"><img src="banner10.png" class="banner">
+        </div></div>
+
+        <div class="search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="search" placeholder="Fried Chicken" oninput="filterCards()">
+
+        </div>
+        <div class="box pink">
+            <p>Breakfast</p>
+            <div  class="try" style="display: flex;overflow-x: scroll;">
+
+                <div class="card" data-name="Pancake Alacart">
+                    <img src="imgs/kfc/breakfast/1PCFLBOXFAMCBO.png">
+                    <p>1pc Chicken</p>
+                    <span>₱90.00</span>
+                    <button onclick="addToCart('Sphagetti Alacart', 69)">Alacart</button> 
+                    <p>Sphagetti with Coke</p>
+                    <span>₱120.00</span>
+                    <button class="combo" onclick="addToCart('Pancake Combo', 94)">Combo</button>
+                </div>
+
+                <div class="card" data-name="cheesy eggdesal">
+                    <img src="imgs/kfc/breakfast/2PCFLBOXCBO.png">
+                    <p>BBQ</p>
+                    <span>₱50.00</span>
+                    <button  onclick="addToCart('Cheesy Eggdesal', 50)">Add to cart</button>
+                    <p>Cheesy Eggdesal with McCoffee </p>
+                    <span>₱124.00</span>
+                    <button class="combo" onclick="addToCart('Eggdesal with McCoffee', 124)">Combo</button>
+                </div>
+
+                <div class="card" data-name="EggMcMuffin">
+                    <img src="imgs/kfc/breakfast/BCORNPLT.png">
+                    <p>Pecho</p>
+                    <span>₱120.00</span>
+                    <button  onclick="addToCart('EggMcMuffin', 120)">Add to cart</button>
+                    <p>Egg McMuffin with Coffee</p>
+                    <span>₱124.00</span>
+                    <button class="combo" onclick="addToCart('EggMcMuffin with McCoffee', 159)">Combo</button>
+                 
+                </div>
+
+                <div class="card" data-name="Hashbrown">
+                    <img src="imgs/kfc/breakfast/CSLAWPLT.png">
+                    <p>Beef Tapa</p>
+                    <span>₱59.00</span>
+                    <button  onclick="addToCart('Hashbrown', 59)">Add to cart</button>
+                    <p>Cheesy Eggdesal with McCoffee </p>
+                    <span>₱124.00</span>
+                    <button class="combo" onclick="addToCart('Hashbrown with McCoffee', 124)">Combo</button>
+                </div>
+
+                <div class="card" data-name="Hotcake">
+                    <img src="imgs/kfc/breakfast/MACAPLT.png">
+                    <p>Burger Stake</p>
+                    <span>₱50.00</span>
+                    <button  onclick="addToCart('Hotcake', 50)">Add to cart</button>
+                    <p>Hotcake with Sausage </p>
+                    <span>₱130.00</span>
+                    <button class="combo" onclick="addToCart('Eggdesal with McCoffee', 130)">Combo</button>
+                </div>
+
+                <div class="card" data-name="McCafe-Capuccino">
+                    <img src="imgs/kfc/breakfast/MPOTPLT.png">
+                    <p>liempo-inasal</p>
+                    <span>₱60.00</span>
+                    <button  onclick="addToCart('McCafe-Capuccino',60)">Add to cart</button>
+                    <p>Cheesy Eggdesal with McCoffee </p>
+                    <span>₱104.00</span>
+                    <button class="combo" onclick="addToCart('McCafe-Capuccino Large', 104)">Combo</button>
+                </div>
+
+                <div class="card" data-name="Sausage">
+                    <img src="imgs/kfc/breakfast/SHOTFLBOXCBO.png">
+                    <p>Corned Beef</p>
+                    <span>₱70.00</span>
+                    <button  onclick="addToCart('Cheesy Eggdesal', 70)">Add to cart</button>
+                    <p>Sausage with Rice </p>
+                    <span>₱89.00</span>
+                    <button class="combo" onclick="addToCart('Eggdesal with McCoffee', 89)">Combo</button>
+                </div>
+
+               
+
+               ]
+        
+            </div>
+            </div>
+
+            <div class="box green">
+                
+
+                <p>Lunch</p>
+                <div  class="try" style="display: flex;overflow-x: scroll;">
+
+
+
+
+                    <div class="card" data-name="Hotcake">
+                        <img src="imgs/kfc/cat1/2PCFLBOXCBO.png">
+                        <p>Burger Stake</p>
+                        <span>₱50.00</span>
+                        <button  onclick="addToCart('Hotcake', 50)">Add to cart</button>
+                        <p>Hotcake with Sausage </p>
+                        <span>₱130.00</span>
+                        <button class="combo" onclick="addToCart('Eggdesal with McCoffee', 130)">Combo</button>
+                    </div>
+    
+                    <div class="card" data-name="McCafe-Capuccino">
+                        <img src="imgs/kfc/cat1/6PCBRWNEBOX.png">
+                        <p>liempo-inasal</p>
+                        <span>₱60.00</span>
+                        <button  onclick="addToCart('McCafe-Capuccino',60)">Add to cart</button>
+                        <p>Cheesy Eggdesal with McCoffee </p>
+                        <span>₱104.00</span>
+                        <button class="combo" onclick="addToCart('McCafe-Capuccino Large', 104)">Combo</button>
+                    </div>
+    
+                    <div class="card" data-name="Hashbrown">
+                        <img src="imgs/kfc/cat1/AKZSMBCORNCBO.png">
+                        <p>Beef Tapa</p>
+                        <span>₱59.00</span>
+                        <button  onclick="addToCart('Hashbrown', 59)">Add to cart</button>
+                        <p>Cheesy Eggdesal with McCoffee </p>
+                        <span>₱124.00</span>
+                        <button class="combo" onclick="addToCart('Hashbrown with McCoffee', 124)">Combo</button>
+                    </div>
+    
+                    <div class="card" data-name="Hotcake">
+                        <img src="imgs/kfc/cat1/BMEAL2.png">
+                        <p>Burger Stake</p>
+                        <span>₱50.00</span>
+                        <button  onclick="addToCart('Hotcake', 50)">Add to cart</button>
+                        <p>Hotcake with Sausage </p>
+                        <span>₱130.00</span>
+                        <button class="combo" onclick="addToCart('Eggdesal with McCoffee', 130)">Combo</button>
+                    </div>
+                    <div class="card" data-name="Hotcake">
+                        <img src="imgs/kfc/cat1/BUCK10.png">
+                        <p>Burger Stake</p>
+                        <span>₱50.00</span>
+                        <button  onclick="addToCart('Hotcake', 50)">Add to cart</button>
+                        <p>Hotcake with Sausage </p>
+                        <span>₱130.00</span>
+                        <button class="combo" onclick="addToCart('Eggdesal with McCoffee', 130)">Combo</button>
+                    </div>
+             
+                    <div class="card" data-name="Hotcake">
+                        <img src="imgs/kfc/cat1/CHEZORSNR.png">
+                        <p>Burger Stake</p>
+                        <span>₱50.00</span>
+                        <button  onclick="addToCart('Hotcake', 50)">Add to cart</button>
+                        <p>Hotcake with Sausage </p>
+                        <span>₱130.00</span>
+                        <button class="combo" onclick="addToCart('Eggdesal with McCoffee', 130)">Combo</button>
+                    </div>
+                    <div class="card" data-name="Hotcake">
+                        <img src="imgs/kfc/cat1/CHEZORSNRCBO.png">
+                        <p>Burger Stake</p>
+                        <span>₱50.00</span>
+                        <button  onclick="addToCart('Hotcake', 50)">Add to cart</button>
+                        <p>Hotcake with Sausage </p>
+                        <span>₱130.00</span>
+                        <button class="combo" onclick="addToCart('Eggdesal with McCoffee', 130)">Combo</button>
+                    </div>
+                    <div class="card" data-name="Hotcake">
+                        <img src="imgs/kfc/cat1/FAMBOWLCBO.png">
+                        <p>Burger Stake</p>
+                        <span>₱50.00</span>
+                        <button  onclick="addToCart('Hotcake', 50)">Add to cart</button>
+                        <p>Hotcake with Sausage </p>
+                        <span>₱130.00</span>
+                        <button class="combo" onclick="addToCart('Eggdesal with McCoffee', 130)">Combo</button>
+                    </div>
+                    <div class="card" data-name="Hotcake">
+                        <img src="imgs/kfc/cat1/SIGSWCBO.png">
+                        <p>Burger Stake</p>
+                        <span>₱50.00</span>
+                        <button  onclick="addToCart('Hotcake', 50)">Add to cart</button>
+                        <p>Hotcake with Sausage </p>
+                        <span>₱130.00</span>
+                        <button class="combo" onclick="addToCart('Eggdesal with McCoffee', 130)">Combo</button>
+                    </div>
+             
+
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+        </div>
+       
+        <div class="box violet">
+            <p>Dinner</p>
+            <div  class="try" style="display: flex;overflow-x: scroll;">
+           
+            <div class="card">
+                <img src="imgs/kfc/cat1/XTRMZNGRFLM.png">
+                <p>^pc ChickenJoy</p>
+                <span>₱119.00</span>
+                <button  onclick="addToCart('BurgerMcDo', 119)">Add to cart</button>
+                <p>BurgerMcDo with Drinks </p>
+                <span>₱200.00</span>
+                <button class="combo" onclick="addToCart('2pcChickenSphag', 290)">Combo</button>
+            </div>
+            <div class="card">
+                <img src="imgs/kfc/cat1/XTRMZNGRAC.png">
+                <p>burgersteak</p>
+                <span>₱109.00</span>
+                <button  onclick="addToCart('Cheeseburger', 109)">Add to cart</button>
+                <p>Cheeseburger with Drinks </p>
+                <span>₱120.00</span>
+                <button class="combo" onclick="addToCart('2pcChickenSphag', 290)">Combo</button>
+            </div>
+
+            <div class="card">
+                <img src="imgs/kfc/cat1/XTRMREGHSHOTSAC.png">
+                <p>Chicken with Palabok</p>
+                <span>₱179.00</span>
+                <button  onclick="addToCart('CheeseburgerDeluxe', 179)">Add to cart</button>
+                <p>CheeseburgerDeluxe with Drinks </p>
+                <span>₱210.00</span>
+                <button class="combo" onclick="addToCart('2pcChickenSphag', 210)">Combo</button>
+            </div>
+
+            <div class="card">
+                <img src="imgs/kfc/cat1/XTRMREGHSHOTSAC.png">
+                <p>1pcChickenSandwich</p>
+                <span>₱140.00</span>
+                <button  onclick="addToCart('1pcChickenRice', 140)">Add to cart</button>
+                <p>1pcChickenRice with Drinks </p>
+                <span>₱180.00</span>
+                <button class="combo" onclick="addToCart('1pcChickenRice', 180)">Combo</button>
+            </div>
+
+            
+            <div class="card">
+                <img src="imgs/kfc/cat1/XTRMDPZNGRMLCBO.png">
+                <p>Hotdog</p>
+                <span>₱150.00</span>
+                <button  onclick="addToCart('1pcChickenSphag', 150)">Add to cart</button>
+                <p>1pcChickenSpag with Drinks </p>
+                <span>₱190.00</span>
+                <button class="combo" onclick="addToCart('1pcChickenSphag', 190)">Combo</button>
+            </div>
+
+            <div class="card">
+                <img src="imgs/kfc/cat1/XTRM8PCBM.png">
+                <p>2pcChickenRice</p>
+                <span>₱250.00</span>
+                <button  onclick="addToCart('2pcChickenRice', 250)">Add to cart</button>
+                <p>1pcChickenSpag with Drinks </p>
+                <span>₱290.00</span>
+                <button class="combo" onclick="addToCart('2pcChickenSphag', 290)">Combo</button>
+            </div>
+            <div class="card">
+                <img src="imgs/kfc/cat1/XTRMCHXZNGRFLM.png">
+                <p>6pcChickenNuggets</p>
+                <span>₱130.00</span>
+                <button  onclick="addToCart('5pcChickenNuggets', 130)">Add to cart</button>
+                <p>6pcChickenNuggets with Drinks </p>
+                <span>₱150.00</span>
+                <button class="combo" onclick="addToCart('2pcChickenSphag', 290)">Combo</button>
+            </div>
+            <div class="card">
+                <img src="imgs/kfc/cat2/1PCCOBSOUP.png">
+                <p>BigMac</p>
+                <span>₱169.00</span>
+                <button  onclick="addToCart('5pcChickenNuggets', 130)">Add to cart</button>
+                <p>BigMac with Drinks </p>
+                <span>₱200.00</span>
+                <button class="combo" onclick="addToCart('2pcChickenSphag', 290)">Combo</button>
+            </div>
+
+            <div class="card">
+                <img src="imgs/kfc/cat2/2Piece_w_Rice_and_drink.png">
+                <p>CheesyBurger</p>
+                <span>₱109.00</span>
+                <button  onclick="addToCart('Cheeseburger', 109)">Add to cart</button>
+                <p>CheesyBurger with Drinks </p>
+                <span>₱120.00</span>
+                <button class="combo" onclick="addToCart('2pcChickenSphag', 290)">Combo</button>
+            </div>
+
+        </div>
+           
+        </div>
+
+
+
+        <div class="box yellow">
+            <p>Snacks</p>
+            <div  class="try" style="display: flex;overflow-x: scroll;">
+                <div class="card">
+                    <img src="imgs/kfc/snacks/ASHOTSCBO.png">
+                    <p>BananaPie</p>
+                    <span>₱59.00</span>
+                    <button  onclick="addToCart('ApplePie', 59)">Add to cart</button>
+                </div>
+    
+                <div class="card">
+                    <img src="imgs/kfc/snacks/CBURWCHZCBO.png">
+                    <p>Choco</p>
+                    <span>₱30.00</span>
+                    <button  onclick="addToCart('Fries', 109)">Add to cart</button>
+                </div>
+                <div class="card">
+                    <img src="imgs/kfc/snacks/CHEZORSNR.png">
+                    <p>Choco</p>
+                    <span>₱30.00</span>
+                    <button  onclick="addToCart('Fries', 109)">Add to cart</button>
+                </div>
+                <div class="card">
+                    <img src="imgs/kfc/snacks/FAMBOWL.png">
+                    <p>Choco</p>
+                    <span>₱30.00</span>
+                    <button  onclick="addToCart('Fries', 109)">Add to cart</button>
+                </div>
+                <div class="card">
+                    <img src="imgs/kfc/snacks/FAMBOWLCBO.png">
+                    <p>Choco</p>
+                    <span>₱30.00</span>
+                    <button  onclick="addToCart('Fries', 109)">Add to cart</button>
+                </div>
+                <div class="card">
+                    <img src="imgs/kfc/snacks/SHOTS-L.png ">
+                    <p>Choco</p>
+                    <span>₱30.00</span>
+                    <button  onclick="addToCart('Fries', 109)">Add to cart</button>
+                </div>
+               
+           
+
+        
+    
+
+           
+
+
+        </div>
+           
+        </div>
+
+
+
+
+
+
+
+        <div class="box red">
+            <p>Dessert</p>
+            <div  class="try" style="display: flex;overflow-x: scroll;">
+       
+                <div class="card">
+                    <img src="imgs/kfc/dessert/6PCBRWNEBOX.png">
+                    <p>BananaPie</p>
+                    <span>₱59.00</span>
+                    <button  onclick="addToCart('ApplePie', 59)">Add to cart</button>
+                </div>
+                <div class="card">
+                    <img src="imgs/kfc/dessert/BRWNY-M.png">
+                    <p>Choco</p>
+                    <span>₱30.00</span>
+                    <button  onclick="addToCart('Fries', 109)">Add to cart</button>
+                </div>
+                <div class="card">
+                    <img src="imgs/kfc/dessert/COKEFLOAT.png">
+                    <p>Choco</p>
+                    <span>₱30.00</span>
+                    <button  onclick="addToCart('Fries', 109)">Add to cart</button>
+                </div>
+                <div class="card">
+                    <img src="imgs/kfc/dessert/ICEDTEAUNSWT-L.png">
+                    <p>Choco</p>
+                    <span>₱30.00</span>
+                    <button  onclick="addToCart('Fries', 109)">Add to cart</button>
+                </div>
+                <div class="card">
+                    <img src="imgs/kfc/dessert/ICEDTEAUNSWT-M.png">
+                    <p>Choco</p>
+                    <span>₱30.00</span>
+                    <button  onclick="addToCart('Fries', 109)">Add to cart</button>
+                </div>
+                <div class="card">
+                    <img src="imgs/kfc/dessert/ROYALFLOAT.png">
+                    <p>Choco</p>
+                    <span>₱30.00</span>
+                    <button  onclick="addToCart('Fries', 109)">Add to cart</button>
+                </div>
+               
+       
+
+        </div>
+           
+        </div>
+
+
+
+
+
+
+
+
+       </div>
+        
+    </div>
+    </div>
+    
+ 
+<script>
+
+
+function showLoader() {
+    var loaderContainer = document.querySelector('.loadercontainer');
+    loaderContainer.style.display = 'block';
+
+    // Set a timeout to hide the loader and show a new div after 3 seconds
+    setTimeout(function() {
+        // Hide the loader
+
+
+        // Show a new div (replace '.newDiv' with your actual class or ID)
+        var newDiv = document.querySelector('.newDiv');
+        newDiv.style.display = 'block';
+    }, 3000); 
+}
+function hideLoader() {
+    var loaderContainer = document.querySelector('.loadercontainer');
+    loaderContainer.style.display = 'none';
+
+    // Reset the content of the cart
+    resetCart();
+}
+
+function resetCart() {
+    cartItems = [];
+    updateCart();
+}
+
+
+    var cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+    function addToCart(itemName, itemPrice) {
+        var existingItem = cartItems.find(item => item.name === itemName);
+
+        if (existingItem) {
+            existingItem.quantity += 1;
+        } else {
+            cartItems.push({ name: itemName, price: itemPrice, quantity: 1 });
+        }
+
+        updateCart();
+    }
+
+    function updateCart() {
+        var cartItemsContainer = document.getElementById('cart-items');
+        var totalElement = document.getElementById('total');
+        var total = 0;
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+        cartItemsContainer.innerHTML = '';
+        cartItems.forEach(function(item) {
+            total += item.price * item.quantity;
+            var cartItemDiv = document.createElement('div');
+            cartItemDiv.className = 'cart-item';
+            cartItemDiv.innerHTML = `
+                <span style="font-weight:bold;margin-right:20px;">${item.name} - ₱${item.price.toFixed(2)} </span>  Quantity:
+                <input class="quantity-input" type="number" value="${item.quantity}" min="0" onchange="updateQuantity('${item.name}', this.value)">
+             
+            `;
+            cartItemsContainer.appendChild(cartItemDiv);
+        });
+        totalElement.textContent = total.toFixed(2);
+    }
+
+    function updateQuantity(itemName, newQuantity) {
+        var item = cartItems.find(item => item.name === itemName);
+
+        if (item) {
+            item.quantity = parseInt(newQuantity, 10);
+            if (item.quantity === 0) {
+                removeItem(itemName);
+            } else {
+                updateCart();
+            }
+        }
+    }
+
+    function removeItem(itemName) {
+        cartItems = cartItems.filter(item => item.name !== itemName);
+        updateCart();
+    }
+
+    function placeOrder() {
+        var receiptItemsContainer = document.getElementById('receipt-items');
+        var receiptTotalElement = document.getElementById('receipt-total');
+        var receipt = document.getElementById('receipt');
+        var total = 0;
+
+        // Clear previous receipt
+        receiptItemsContainer.innerHTML = '';
+
+        cartItems.forEach(function(item) {
+            total += item.price * item.quantity;
+
+            // Display each item in the receipt
+            var receiptItemDiv = document.createElement('div');
+            receiptItemDiv.innerHTML = `${item.name} - ₱${item.price.toFixed(2)} x ${item.quantity}`;
+            receiptItemsContainer.appendChild(receiptItemDiv);
+        });
+
+        // Display the total price in the receipt
+        receiptTotalElement.textContent = total.toFixed(2);
+        receipt.style.display = 'block';
+    }
+
+    updateCart();
+
+
+
+
+</script>
+
+<script>
+    function filterCards() {
+         // Get the value from the search input
+    var searchInput = document.getElementById('search');
+
+if (!searchInput) {
+    console.error("Search input element not found.");
+    return;
+}
+
+var searchTerm = searchInput.value.toLowerCase();
+        // Get the value from the search input
+        var searchTerm = document.getElementById('search').value.toLowerCase();
+
+        // Get all the cards (modify the selector based on your structure)
+        var cards = document.querySelectorAll('.card');
+
+        // Iterate over each card to check if it contains the search term
+        cards.forEach(function(card) {
+            var cardName = card.getAttribute('data-name').toLowerCase();
+
+            // Check if the card name contains the search term
+            if (cardName.includes(searchTerm)) {
+                // Add a class to display matching cards
+                card.classList.remove('notmatching-card');
+            } else {
+                // Add a class to hide non-matching cards
+                card.classList.add('notmatching-card');
+            }
+        });
+    }
+</script>
+
+
+
+   
+</body>
+</html>
